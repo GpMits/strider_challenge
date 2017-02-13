@@ -5,13 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tasks")
 public class Tasks {
 
-	@id
+	@Id
 	@Column(name = "task_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
@@ -77,6 +80,6 @@ public class Tasks {
 
 	@Override
 	public String toString(){
-		return "Task\n id="+id+", name="+name;
+		return "Task\n id="+id+", name="+description;
 	}
 }

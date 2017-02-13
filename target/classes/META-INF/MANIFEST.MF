@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Implementation-Title: spring-boot-mysql-hibernate
+Implementation-Title: start
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: gusta
+Built-By: Gustavo
 Implementation-Vendor-Id: gustato
 Build-Jdk: 1.8.0_121
 Created-By: Maven Integration for Eclipse

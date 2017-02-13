@@ -9,7 +9,7 @@
   <artifactId>start</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>spring-boot-mysql-hibernate</name>
+  <name>start</name>
   <description>Use MySQL in Spring Boot web application with Hibernate</description>
 
   <parent>

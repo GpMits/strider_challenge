@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping(value="/user")
 public class UserController {
 
@@ -30,16 +31,15 @@ public class UserController {
   
   @RequestMapping(value="/get-by-username")
   @ResponseBody
-  public String getByUsername(String username) {
-    String userId;
+  public User getByUsername(String username) {
+    User user = null;
     try {
-      User user = _userDao.getByUsername(username);
-      userId = String.valueOf(user.getId());
+      user = _userDao.getByUsername(username);
     }
     catch(Exception ex) {
-      return "User not found" + ex.getMessage();
+      return null;
     }
-    return "The user id is: " + userId;
+    return user;
   }
 
   @RequestMapping(value="/save")

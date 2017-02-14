@@ -45,7 +45,13 @@ public class Tasks {
 	public Tasks(String description) {
 	    this.description = description;
 	}
-	  
+	
+	public Tasks(String description, User usr, TaskStatus tStatus) {
+	    this.description = description;
+	    this.user = usr;
+	    this.taskStatus = tStatus;
+	}
+	
 	public int getId() {
 		return id;
 	}

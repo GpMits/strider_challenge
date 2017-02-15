@@ -1,5 +1,6 @@
 package gustavo.models;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.mysql.jdbc.Blob;
 
 @Entity
 @Table(name = "user")
@@ -26,14 +26,12 @@ public class User {
 	@NotNull
 	private String password;
 	
-	
-
 	public User (){
 		this.id = 0;
 		this.username = "none";
 	    this.password = "none";
 	}
-	
+
 	public User(int id) { 
 	    this.id = id;
 	  }
@@ -42,7 +40,7 @@ public class User {
 	    this.username = username;
 	    this.password = password;
 	}
-	  
+	
 	public int getId() {
 		return id;
 	}

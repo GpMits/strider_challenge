@@ -54,13 +54,18 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr ng-repeat="u in ctrl.tasks">
+                          <tr ng-repeat-start="u in ctrl.tasks">
                               <td><span ng-bind="u.id"></span></td>
                               <td><span ng-bind="u.description"></span></td>
                               <td><span ng-bind="u.taskStatus.name"></span></td>
                               <td>
-                              	<button type="button" ng-click="ctrl.check(u)" class="btn btn-info custom-width" ng-disabled="ctrl.check(u)">Expand</button>
+                              	<button type="button" ng-click="show = !show" class="btn btn-info custom-width" ng-disabled="ctrl.check(u)">Expand</button>
                               	<button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
+                              </td>
+                           	  </tr>
+                           	  <tr ng-repeat-end ng-show="show">
+                              <td colspan=4 align="center">
+                              	<img ng-src="/static/image/{{u.img}}" >
                               </td>
                           </tr>
                       </tbody>

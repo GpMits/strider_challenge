@@ -8,7 +8,7 @@ angular.module('myApp').factory('TaskService', ['$http', '$q', function($http, $
         fetchAllTasks: fetchAllTasks,
         createTask: createTask,
         updateUser:updateUser,
-        deleteTask:deleteTask
+        deleteTask:deleteTask,
     };
 
     return factory;
@@ -74,5 +74,5 @@ angular.module('myApp').factory('TaskService', ['$http', '$q', function($http, $
         );
         return deferred.promise;
     }
-
+    
 }]);

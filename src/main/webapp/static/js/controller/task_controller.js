@@ -2,7 +2,7 @@
 
 angular.module('myApp').controller('TaskController', ['$scope', 'TaskService', function($scope, TaskService) {
     var self = this;
-    self.task={id:3,description:'',user:null,taskStatus:null};
+    self.task={id:null,description:'',user:null,taskStatus:null,img:null};
     self.tasks=[];
     
     self.submit = submit;
@@ -15,6 +15,7 @@ angular.module('myApp').controller('TaskController', ['$scope', 'TaskService', f
     fetchAllTasks();
 
     function fetchAllTasks(){
+    	console.log(self.task);
         TaskService.fetchAllTasks()
             .then(
             function(d) {
@@ -82,7 +83,7 @@ angular.module('myApp').controller('TaskController', ['$scope', 'TaskService', f
 
 
     function reset(){
-    	self.task={id:3,description:'',user:null,taskStatus:null};
+    	self.task={id:null,description:'',user:null,taskStatus:null,img:null};
         $scope.myForm.$setPristine(); //reset Form
     }
     

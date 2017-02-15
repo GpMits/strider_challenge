@@ -13,6 +13,7 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -20,7 +21,6 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableTransactionManagement
-@EnableWebMvc
 public class DatabaseConfig extends WebMvcConfigurerAdapter{
  
     @Override
@@ -34,6 +34,7 @@ public class DatabaseConfig extends WebMvcConfigurerAdapter{
         resolver.setSuffix(".jsp");
         return resolver;
     }
+    
   @Value("${db.driver}")
   private String DB_DRIVER;
   

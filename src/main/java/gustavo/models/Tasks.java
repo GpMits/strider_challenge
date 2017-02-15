@@ -30,7 +30,9 @@ public class Tasks {
 	@ManyToOne
 	@JoinColumn(name = "task_status_id")
 	private TaskStatus taskStatus;
-
+	
+	private String img;
+	
 	public Tasks (){
 		this.id = 0;
 		this.description = "none";
@@ -52,6 +54,13 @@ public class Tasks {
 	    this.taskStatus = tStatus;
 	}
 	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public int getId() {
 		return id;
 	}

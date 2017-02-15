@@ -5,23 +5,10 @@
     <title>Task Manager</title>  
     <style>
       .username.ng-valid {
-          background-color: lightgreen;
+          background-color: white;
       }
       .username.ng-dirty.ng-invalid-required {
-          background-color: red;
-      }
-      .username.ng-dirty.ng-invalid-minlength {
-          background-color: yellow;
-      }
-
-      .email.ng-valid {
-          background-color: lightgreen;
-      }
-      .email.ng-dirty.ng-invalid-required {
-          background-color: red;
-      }
-      .email.ng-dirty.ng-invalid-email {
-          background-color: yellow;
+          background-color: lightred;
       }
 
     </style>
@@ -62,15 +49,18 @@
                           <tr>
                               <th>ID.</th>
                               <th>Description</th>
-                              <th width="20%"></th>
+                              <th>Status</th>
+                              <th></th>
                           </tr>
                       </thead>
                       <tbody>
                           <tr ng-repeat="u in ctrl.tasks">
                               <td><span ng-bind="u.id"></span></td>
                               <td><span ng-bind="u.description"></span></td>
+                              <td><span ng-bind="u.taskStatus.name"></span></td>
                               <td>
-                              <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
+                              	<button type="button" ng-click="ctrl.check(u)" class="btn btn-info custom-width" ng-disabled="ctrl.check(u)">Expand</button>
+                              	<button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
                               </td>
                           </tr>
                       </tbody>

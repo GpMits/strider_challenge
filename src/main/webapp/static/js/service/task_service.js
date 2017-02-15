@@ -8,7 +8,7 @@ angular.module('myApp').factory('TaskService', ['$http', '$q', function($http, $
         fetchAllTasks: fetchAllTasks,
         createTask: createTask,
         updateUser:updateUser,
-        deleteUser:deleteUser
+        deleteTask:deleteTask
     };
 
     return factory;
@@ -37,7 +37,7 @@ angular.module('myApp').factory('TaskService', ['$http', '$q', function($http, $
                 deferred.resolve(response.data);
             },
             function(errResponse){
-                console.error('Error while creating User');
+                console.error('Error while creating Task');
                 deferred.reject(errResponse);
             }
         );
@@ -60,15 +60,15 @@ angular.module('myApp').factory('TaskService', ['$http', '$q', function($http, $
         return deferred.promise;
     }
 
-    function deleteUser(id) {
+    function deleteTask(id) {
         var deferred = $q.defer();
-        $http.delete(REST_SERVICE_URI+id)
+        $http.delete(REST_SERVICE_URI+'delete/'+id)
             .then(
             function (response) {
                 deferred.resolve(response.data);
             },
             function(errResponse){
-                console.error('Error while deleting User');
+                console.error('Error while deleting Task');
                 deferred.reject(errResponse);
             }
         );

@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.mysql.jdbc.Blob;
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -23,6 +25,8 @@ public class User {
 	
 	@NotNull
 	private String password;
+	
+	
 
 	public User (){
 		this.id = 0;

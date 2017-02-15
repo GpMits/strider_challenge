@@ -9,6 +9,7 @@ angular.module('myApp').controller('TaskController', ['$scope', 'TaskService', f
     self.edit = edit;
     self.remove = remove;
     self.reset = reset;
+    self.check = check;
 
 
     fetchAllTasks();
@@ -45,12 +46,12 @@ angular.module('myApp').controller('TaskController', ['$scope', 'TaskService', f
         );
     }
 
-    function deleteUser(id){
-        UserService.deleteUser(id)
+    function deleteTask(id){
+        TaskService.deleteTask(id)
             .then(
-            fetchAllUsers,
+            fetchAllTasks,
             function(errResponse){
-                console.error('Error while deleting User');
+                console.error('Error while deleting Task');
             }
         );
     }
@@ -73,10 +74,10 @@ angular.module('myApp').controller('TaskController', ['$scope', 'TaskService', f
 
     function remove(id){
         console.log('id to be deleted', id);
-        if(self.user.id === id) {//clean form if the user to be deleted is shown there.
+        if(self.task.id === id) {//clean form if the user to be deleted is shown there.
             reset();
         }
-        deleteUser(id);
+        deleteTask(id);
     }
 
 
@@ -84,5 +85,10 @@ angular.module('myApp').controller('TaskController', ['$scope', 'TaskService', f
     	self.task={id:3,description:'',user:null,taskStatus:null};
         $scope.myForm.$setPristine(); //reset Form
     }
-
+    
+    function check(tsk){
+    	if(tsk.taskStatus.name == "Finished") return false;
+    	return true;
+    }
+    
 }]);

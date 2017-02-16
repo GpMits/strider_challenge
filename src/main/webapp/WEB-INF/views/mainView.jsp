@@ -14,6 +14,9 @@
     </style>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
      <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+     <link href="<c:url value='/static/css/animation.css' />" rel="stylesheet"></link>
+     
+
   </head>
   <body ng-app="myApp" class="ng-cloak">
       <div class="generic-container" ng-controller="TaskController as ctrl">
@@ -63,9 +66,13 @@
                               	<button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
                               </td>
                            	  </tr>
-                           	  <tr ng-repeat-end ng-show="show">
-                              <td colspan=4 align="center">
-                              	<img ng-src="/static/image/{{u.img}}" >
+                           	  <tr ng-repeat-end ng-show="show" class="sample-show-hide">
+                              <td colspan=4 align="center">	
+                              	<!-- div ng-hide="!show" class="fadein fadeout"-->
+                              	<div class="sample-show-hide" ng-show="show">
+                              		<img ng-src="/static/image/{{u.img}}" class="img-responsive img-thumbnail">
+                              		</div>
+                              	</div>
                               </td>
                           </tr>
                       </tbody>
@@ -74,7 +81,8 @@
           </div>
       </div>
       
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+      <script src="//code.angularjs.org/snapshot/angular.min.js"></script>
+      <script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
       <script src="<c:url value='/static/js/app.js' />"></script>
       <script src="<c:url value='/static/js/service/task_service.js' />"></script>
       <script src="<c:url value='/static/js/controller/task_controller.js' />"></script>

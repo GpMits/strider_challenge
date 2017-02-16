@@ -45,7 +45,14 @@
           </div>
           <div class="panel panel-default">
                 <!-- Default panel contents -->
-              <div class="panel-heading"><span class="lead">List of tasks </span></div>
+              <div class="panel-heading">
+              	<span class="lead">List of tasks </span>
+              	<div class="form-actions floatRight">
+              	<button type="button" ng-click="ctrl.filterParam = 1" class="btn btn-info btn-sm">Finished</button>
+              	<button type="button" ng-click="ctrl.filterParam = 2" class="btn btn-info btn-sm">Pending</button>
+              	<button type="button" ng-click="ctrl.filterParam = 0" class="btn btn-info btn-sm">All</button>
+              	</div>
+              </div>
               <div class="tablecontainer">
                   <table class="table table-hover">
                       <thead>
@@ -57,7 +64,7 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr ng-repeat-start="u in ctrl.tasks">
+                          <tr ng-repeat-start="u in ctrl.tasks | filter: myFilter" ng-init="show=false">
                               <td><span ng-bind="u.id"></span></td>
                               <td><span ng-bind="u.description"></span></td>
                               <td><span ng-bind="u.taskStatus.name"></span></td>
@@ -66,11 +73,10 @@
                               	<button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
                               </td>
                            	  </tr>
-                           	  <tr ng-repeat-end ng-show="show" class="sample-show-hide">
+                           	  <tr ng-repeat-end ng-show="show">
                               <td colspan=4 align="center">	
-                              	<!-- div ng-hide="!show" class="fadein fadeout"-->
                               	<div class="sample-show-hide" ng-show="show">
-                              		<img ng-src="/static/image/{{u.img}}" class="img-responsive img-thumbnail">
+                              		<img ng-src="/static/image/{{u.img}}">
                               		</div>
                               	</div>
                               </td>
@@ -86,5 +92,6 @@
       <script src="<c:url value='/static/js/app.js' />"></script>
       <script src="<c:url value='/static/js/service/task_service.js' />"></script>
       <script src="<c:url value='/static/js/controller/task_controller.js' />"></script>
+      <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
   </body>
 </html>

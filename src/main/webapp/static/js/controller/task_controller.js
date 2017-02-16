@@ -4,6 +4,7 @@ angular.module('myApp').controller('TaskController', ['$scope', 'TaskService', f
     var self = this;
     self.task={id:null,description:'',user:null,taskStatus:null,img:null};
     self.tasks=[];
+    self.filterParam = 0
     
     self.submit = submit;
     self.edit = edit;
@@ -19,6 +20,7 @@ angular.module('myApp').controller('TaskController', ['$scope', 'TaskService', f
         TaskService.fetchAllTasks()
             .then(
             function(d) {
+            	console.log(d);
                 self.tasks = d;
             },
             function(errResponse){
@@ -92,4 +94,8 @@ angular.module('myApp').controller('TaskController', ['$scope', 'TaskService', f
     	return true;
     }
     
+    $scope.myFilter = function (tsk) { 
+        if (self.filterParam == 0) return true
+        else return tsk.taskStatus.id == self.filterParam
+    };
 }]);

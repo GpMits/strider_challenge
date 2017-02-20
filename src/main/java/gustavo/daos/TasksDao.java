@@ -44,8 +44,14 @@ public class TasksDao {
     		.setParameter("idUser", usr.getId()).list();
   }
   
-  public Tasks getById(long id) {
-    return (Tasks) getSession().load(Tasks.class, id);
+  @SuppressWarnings("unchecked")
+  public List<Tasks> listPending(User usr) {
+	    return getSession().createQuery("from Tasks where user_id = :idUser and task_status_id = 1")
+	    		.setParameter("idUser", usr.getId()).list();
+	  }
+  
+  public Tasks getById(int id) {
+    return (Tasks) getSession().createQuery("from Tasks where task_id = :id").setParameter("id", id).list().get(0);
   }
 
   public void update(Tasks task) {
